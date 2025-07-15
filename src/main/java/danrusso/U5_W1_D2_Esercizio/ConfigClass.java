@@ -129,9 +129,24 @@ public class ConfigClass {
 
     // ***************************** TABLE **********************************
 
-    @Bean
-    public Table getTable10() {
-        return new Table(10, 5, TableStatus.OCCUPIED);
+//    @Bean
+//    public Table getTable10() {
+//        return new Table(10, 5, TableStatus.OCCUPIED);
+//    }
+
+    @Bean(name = "table 10")
+    public int tableNo10() {
+        return 10;
+    }
+
+    @Bean(name = "table max")
+    public int tableMaxCapacity() {
+        return 5;
+    }
+
+    @Bean(name = "table status")
+    public TableStatus getTableStatus() {
+        return TableStatus.OCCUPIED;
     }
 
     // ***************************** ORDER **********************************

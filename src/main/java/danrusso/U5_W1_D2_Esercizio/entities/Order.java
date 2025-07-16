@@ -9,17 +9,22 @@ public class Order {
     private OrderStatus status;
     private int customNo;
     private double time;
-    private double bill;
+    private double coperto;
 
 
-    public Order(List<Item> elements, int orderNo, Table table, OrderStatus status, int customNo, double time, double bill) {
+    public Order(List<Item> elements, int orderNo, Table table, OrderStatus status, int customNo, double time, double coperto) {
         this.elements = elements;
         this.orderNo = orderNo;
         this.table = table;
         this.status = status;
         this.customNo = customNo;
         this.time = time;
-        this.bill = bill;
+        this.coperto = coperto;
+    }
+
+    public double getBill() {
+        double tot = this.elements.stream().mapToDouble(Item::getPrice).sum();
+        return tot + (this.coperto * this.customNo);
     }
 
     @Override
@@ -29,7 +34,6 @@ public class Order {
         return "Table number " + table.getNumber() + " \n" +
                 "Status " + status + " \n" +
                 "Customers number " + customNo + " \n" +
-                "Order time " + time + " p.m. \n" +
-                "Bill total " + bill + "$";
+                "Order time " + time + " p.m.";
     }
 }

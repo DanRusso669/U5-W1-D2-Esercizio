@@ -2,7 +2,6 @@ package danrusso.U5_W1_D2_Esercizio;
 
 
 import danrusso.U5_W1_D2_Esercizio.entities.*;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -162,17 +161,6 @@ public class ConfigClass {
         elements.add(getCola());
         elements.add(getBeer());
         return elements;
-    }
-
-    @Bean
-    public int getCustomersNo() {
-        return 2;
-    }
-
-    @Bean(name = "order bill")
-    public double getBill(@Value("${order.coperto}") int coperto) {
-        double tot = getOrderElements().stream().mapToDouble(Item::getPrice).sum();
-        return tot + (coperto * getCustomersNo());
     }
 
 }

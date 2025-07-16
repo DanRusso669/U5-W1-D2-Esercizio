@@ -1,12 +1,7 @@
 package danrusso.U5_W1_D2_Esercizio.entities;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
 
-@Component
 public class Order {
     private List<Item> elements;
     private int orderNo;
@@ -16,14 +11,8 @@ public class Order {
     private double time;
     private double bill;
 
-    @Autowired
-    public Order(@Qualifier("getOrderElements") List<Item> elements, @Qualifier("order number") int orderNo,
-                 Table table,
-                 OrderStatus status,
-                 @Qualifier("customers number") int customNo,
-                 @Qualifier("order time") double time,
-                 @Qualifier("order bill") double bill) {
 
+    public Order(List<Item> elements, int orderNo, Table table, OrderStatus status, int customNo, double time, double bill) {
         this.elements = elements;
         this.orderNo = orderNo;
         this.table = table;

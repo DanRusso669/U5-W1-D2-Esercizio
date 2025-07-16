@@ -129,29 +129,32 @@ public class ConfigClass {
 
     // ***************************** TABLE **********************************
 
-//    @Bean
-//    public Table getTable10() {
-//        return new Table(10, 5, TableStatus.OCCUPIED);
-//    }
-
     @Bean(name = "table 10")
-    public int tableNo10() {
-        return 10;
+    public Table getTable10() {
+        return new Table(10, 5, TableStatus.OCCUPIED);
     }
 
-    @Bean(name = "table max")
-    public int tableMaxCapacity() {
-        return 5;
+
+    @Bean
+    public Table getTable15() {
+        return new Table(15, 2, TableStatus.UNOCCUPIED);
     }
 
-    @Bean(name = "table status")
-    public TableStatus getTableStatus() {
-        return TableStatus.OCCUPIED;
+
+    @Bean
+    public Table getTable12() {
+        return new Table(12, 2, TableStatus.UNOCCUPIED);
+    }
+
+
+    @Bean
+    public Table getTable13() {
+        return new Table(13, 4, TableStatus.UNOCCUPIED);
     }
 
     // ***************************** ORDER **********************************
 
-    @Bean
+    @Bean("order1 items")
     public List<Item> getOrderElements() {
         List<Item> elements = new ArrayList<>();
         elements.add(getCapricciosa());
@@ -162,29 +165,14 @@ public class ConfigClass {
     }
 
     @Bean
-    public OrderStatus getOrderStatus() {
-        return OrderStatus.PROCESSING;
-    }
-
-    @Bean(name = "order number")
-    public int getOrderNo() {
-        return 219;
-    }
-
-    @Bean(name = "customers number")
-    public int getCustomerNo() {
+    public int getCustomersNo() {
         return 2;
-    }
-
-    @Bean(name = "order time")
-    public double getOrderTime() {
-        return 20.30;
     }
 
     @Bean(name = "order bill")
     public double getBill(@Value("${order.coperto}") int coperto) {
         double tot = getOrderElements().stream().mapToDouble(Item::getPrice).sum();
-        return tot + (coperto * getCustomerNo());
+        return tot + (coperto * getCustomersNo());
     }
 
 }
